@@ -2,13 +2,13 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
   "installCommand": "git clone --branch stable https://github.com/flutter/flutter.git /tmp/f || git -C /tmp/f pull; /tmp/f/bin/flutter config --no-analytics --enable-web",
-  "buildCommand": "/tmp/f/bin/flutter pub get && /tmp/f/bin/flutter build web --release",
+  "buildCommand": "/tmp/f/bin/flutter pub get && /tmp/f/bin/flutter build web --release && rm -rf .dart_tool",
   "outputDirectory": "build/web",
   "functions": {
-    "api/main.py": {
+    "api/**/*.py": {
       "maxDuration": 60,
       "memory": 1024,
-      "excludeFiles": "{flutter/**,.dart_tool/**,build/**}"
+      "excludeFiles": "{flutter/**,.dart_tool/**,build/**,lib/**,test/**,web/**,.kilo/**,*.md}"
     }
   },
   "rewrites": [
