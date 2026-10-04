@@ -302,9 +302,19 @@ citations), and falls back to a single section when the model ignores the contra
   function automatically; `installCommand` therefore only fetches Dart packages.
 - Any change to `api/requirements.txt`, the Chroma version, or the rewrite order is a
   deployment-affecting change — read `CONSTRAINTS.md` first.
+- **Flutter is not in Vercel's build image.** That image is Amazon Linux 2023 with
+  Node, Python, and Ruby, so `installCommand` clones the stable Flutter SDK into
+  `flutter/` and `buildCommand` calls `flutter/bin/flutter` by that relative path.
+  Anything that assumes a bare `flutter` on `$PATH` will fail here. The clone is cached
+  between builds but still adds several minutes to the first one.
 - `maxDuration: 60` also bounds `POST /api/proposal`. Measured locally against Groq, a
   full RISET draft takes roughly 10 s, so the cap leaves comfortable headroom; a provider
   fallback chain that stalls would surface as a gateway error rather than a draft.
+- **Function bundle size is tight.** `chromadb` pulls in `onnxruntime` (~44 MB) and
+  `numpy` (~31 MB), and the runtime dependencies total roughly 219 MB unzipped against
+  Vercel's 250 MB limit for a Python function. `onnxruntime` is dead weight here because
+  vectors are always passed explicitly, so the ONNX model is never loaded — pruning it is
+  the obvious headroom if the build ever reports an oversized function.
 
 ## UI structure
 

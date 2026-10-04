@@ -20,3 +20,6 @@ build/
 # Local corpora
 api/data/*.bin
 api/data/chroma/
+
+# Flutter SDK cloned by vercel.json at build time
+flutter/

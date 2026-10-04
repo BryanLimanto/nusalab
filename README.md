@@ -499,14 +499,36 @@ flutter test
 
 ## Deployment ke Vercel
 
+### Yang perlu diketahui sebelum mulai
+
+- **Flutter tidak tersedia di build image Vercel.** Image itu berbasis Amazon Linux 2023
+  dan hanya menyediakan Node, Python, dan Ruby. Karena itu `vercel.json` meng-clone SDK
+  Flutter stable ke folder `flutter/` pada langkah install, lalu memanggil
+  `flutter/bin/flutter` melalui path relatif tersebut. Build pertama akan memakan waktu
+  beberapa menit tambahan.
+- **Ukuran bundel fungsi Python hampir penuh.** `chromadb` menarik `onnxruntime`
+  (sekitar 44 MB) dan `numpy` (sekitar 31 MB). Total dependensi runtime sekitar 219 MB
+  Compared terhadap batas 250 MB untuk satu fungsi Python di Vercel. `onnxruntime`
+  sebenarnya tidak dipakai, karena vektor selalu dikirim secara eksplisit.
+
+### Langkah
+
 1. Push repositori ini ke GitHub.
-2. Import repositori ke Vercel sebagai project. `vercel.json` sudah menangani build:
-   - `installCommand`: `flutter pub get`
-   - `buildCommand`: `flutter build web --release`
+2. Import repositori ke Vercel sebagai project. **Framework Preset: Other.** Seluruh
+   pengaturan build sudah ada di `vercel.json`:
+   - `installCommand`: clone SDK Flutter stable ke `flutter/`
+   - `buildCommand`: `flutter/bin/flutter pub get` lalu `flutter/bin/flutter build web --release`
    - `outputDirectory`: `build/web`
 3. Tambahkan environment variable di **Project Settings**, lalu **Environment Variables**:
-   `GROQ_API_KEY`, `GEMINI_API_KEY`, dan bila perlu `ALLOWED_ORIGINS`.
+   - `GROQ_API_KEY` untuk LLM
+   - `GEMINI_API_KEY` untuk embedding
+   - `ALLOWED_ORIGINS` bila perlu membatasi origin
 4. Deploy.
+
+Alternatif tanpa dashboard: pasang Vercel CLI, lalu jalankan `vercel` di direktori ini dan
+ikuti petunjuknya.
+
+### Routing
 
 Routing disusun sehingga `/api/*` diarahkan ke fungsi Python `api/main.py`, sedangkan
 semua path lain jatuh ke `index.html`. Dengan begitu deep link dan refresh di
