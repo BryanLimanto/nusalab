@@ -23,3 +23,7 @@ api/data/chroma/
 
 # Flutter SDK cloned by vercel.json at build time
 flutter/
+
+# Vercel CLI project link and the OIDC token it writes
+.vercel/
+.env.local
