@@ -134,32 +134,8 @@ pedoman resmi konsentrasi **Artificial Intelligence**. Detail lengkapnya ada di
 
 ## Tampilan Aplikasi
 
-```
-+------------------------------------------------------------------------------+
-| [UKP] Repository TA      Home  Publications  Chatbot Proposal AI  Chatbot    |
-+----------------------+---------------------------------------------------+
-| FILTER        Reset  |  Repository Tugas Akhir UKP                          |
-|                      |  Cari judul, penulis, atau kata kunci pada 24 TA.   |
-| RENTANG TAHUN        |  +---------------------------------+  +------+     |
-|  2020 ----+----- 2026|  | 🔍 Contoh: aplikasi mobile ...  |  | Cari |     |
-|                      |  +---------------------------------+  +------+     |
-| PROGRAM STUDI        |  -----------------------------------------------------|
-|  [x] Informatika     |  > Judul TA di sini                        [0.84]    |
-|  [ ] Sistem Informasi|    R. Prasetyo, N. Rahmawati                        |
-|                      |    Informatika · Mobile Engineering · 2025            |
-| KONSENTRASI          |    Cuplikan abstrak...                                |
-|  [ ] Artificial Int. |    [Q1] [Mobile] [absensi] [qr code]                 |
-|  [ ] Cyber Security  |    🔗 repository.ukp.ac.id                              |
-|                      |  -----------------------------------------------------|
-| TOPIK                |  > Judul TA berikutnya...                              |
-|  Semua topik     v  |                                                     |
-|                      |                                                     |
-|                      |  Menampilkan 1-20 dari 24 TA   [Sebelumnya] [-next] |
-|                      |                                             [ Tanya  ]|
-|                      |                                             [  AI   ]|
-|                      |                                             [  +   ]|
-+----------------------+---------------------------------------------------+
-```
+<img width="1918" height="901" alt="image" src="https://github.com/user-attachments/assets/cf7c2295-c774-4591-ac08-59932ee321f9" />
+
 
 Saat panel chatbot dibuka, daftar hasil tetap terlihat di belakang. Inilah alasan panel
 menggeser dari kanan, bukan memenuhi layar.
