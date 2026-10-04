@@ -1,8 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "installCommand": "if [ -d flutter ]; then git -C flutter pull; else git clone --branch stable https://github.com/flutter/flutter.git flutter; fi && flutter/bin/flutter config --no-analytics && flutter/bin/flutter config --enable-web",
-  "buildCommand": "flutter/bin/flutter pub get && flutter/bin/flutter build web --release",
+  "installCommand": "git clone --branch stable https://github.com/flutter/flutter.git /tmp/f || git -C /tmp/f pull; /tmp/f/bin/flutter config --no-analytics --enable-web",
+  "buildCommand": "/tmp/f/bin/flutter pub get && /tmp/f/bin/flutter build web --release",
   "outputDirectory": "build/web",
   "functions": {
     "api/main.py": {
