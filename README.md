@@ -1,4 +1,4 @@
-# Repository Tugas Akhir UKP & Generator Proposal TA (AI)
+# PetraScholar
 
 Aplikasi web publik untuk **menelusuri repository Tugas Akhir Universitas Kristen Petra
 (UKP)** sekaligus **menghasilkan kerangka proposal Tugas Akhir** dengan bantuan AI.
