@@ -287,6 +287,26 @@ pendek pada setiap permintaan.
 
 ---
 
+## Proses Pengembangan dengan AI (Kilocode)
+
+Aplikasi PetraScholar ini dibangun melalui pendekatan *AI-Assisted Development*, dengan memanfaatkan kolaborasi erat antara saya sebagai pengembang dan **Kilocode** sebagai AI Agent.
+
+### Cara Kerja AI dalam Pembuatan Kode
+Kilocode berperan sebagai asisten *programming* yang aktif (agentic) dalam siklus pengembangan:
+1. **Setup & Inisialisasi Project:** Kilocode membantu mengatur struktur awal repositori, men-setup environment (seperti virtual environment Python dan instalasi dependensi Flutter Web), serta membuat file konfigurasi awal.
+2. **Pengembangan Backend & Logika RAG:** Berdasarkan perintah saya, Kilocode menulis implementasi kode FastAPI, menyusun *routing*, mengintegrasikan ChromaDB, serta menyambungkan API dengan LLM via Groq dan Gemini.
+3. **Pengembangan Frontend Web:** Kilocode juga membantu membangun antarmuka web (UI) menggunakan Flutter Web (Dart), termasuk membuat komponen-komponen seperti *search hero*, *sidebar filter*, hingga panel *chat overlay*.
+
+### Keputusan Teknis dan Peran Saya
+Meskipun Kilocode yang secara teknis "mengetik" atau menulis sebagian besar kode, kendali dan **keputusan teknis** sepenuhnya berada di tangan saya. Peran saya dalam proses ini meliputi:
+
+*   **Mendefinisikan Kebutuhan (Requirements):** Saya menentukan alur bisnis aplikasi (seperti generator proposal wajib menanyakan "RISET/PROYEK"), batasannya, dan sumber datanya (metadata TA).
+*   **Verifikasi & Validasi Alur:** Saya tidak serta-merta menerima kode dari AI. Saya secara aktif memverifikasi setiap langkahnya—meninjau apakah proses pengolahan data sudah benar, memastikan arsitektur *stateless* untuk deployment Vercel dapat berjalan baik, dan memastikan *prompt engineering* untuk LLM generator proposal bekerja sesuai target.
+*   **Pengambilan Keputusan Arsitektur:** Keputusan penting seperti mematikan fitur autentikasi (karena aplikasi ini bersifat publik), memilih untuk menggunakan FastAPI *serverless*, dan menentukan mekanisme *fallback* untuk embedding LLM adalah keputusan desain dari saya. Kilocode diarahkan untuk menulis kode yang *comply* dengan arsitektur dan keputusan yang telah saya buat ini.
+
+Intinya, Kilocode bertindak sebagai eksekutor koding yang sangat cepat, sementara saya bertindak sebagai **sutradara teknis (director) dan verifikator** yang memastikan hasil akhir aplikasi bekerja persis seperti yang saya mau.
+
+---
 ## Struktur Proyek
 
 ```
